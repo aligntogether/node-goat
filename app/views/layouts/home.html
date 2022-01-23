@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html>
+  <!-- Mirrored from landing.engotheme.com/html/jenstore/demo/homev1.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 11 Jan 2022 11:36:57 GMT -->
+  <head>
+    <title>Homev1</title>
+    <meta charset="utf-8" />
+    <!-- bootstrap vs fontawesome-->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+      crossorigin="anonymous"
+    />
+    <link rel="icon" href="img/favicon.png" type="image/x-icon" />
+
+    <link rel="stylesheet" type="text/css" href="css/style-homev1.css" />
+    <link rel="stylesheet" type="text/css" href="css/style-res-v1.css" />
+    <link rel="stylesheet" type="text/css" href="css/style-fix-nav.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="css/style-form-search-mobile.css"
+    />
+    <!-- scroll -->
+
+    <!-- GG FONT -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Abril+Fatface"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,700"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+      integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+      crossorigin="anonymous"
+    />
+    {% block css %} {% endblock %}
+  </head>
+  <body>
+    <header
+      class="{{headerClass || 'navbar-fixed-top'}} pos-header"
+      id="header-v1"
+    >
+      <nav class="hidden-xs">
+        <div class="container">
+          <ul class="nav navbar-nav nav-help">
+            <li><span>P:</span>800 123 654 78</li>
+            <li><span>E:</span>Jenstore@gmail.com</li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right language">
+            <li class="dropdown eng-language">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Eng</a>
+              <figure id="language-figure"></figure>
+              <ul class="dropdown-menu">
+                <li><a href="#">Eng</a></li>
+                <li><a href="#">France</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="container">
+        <div class="row">
+          <div class="navbar-header mobile-menu">
+            <button
+              type="button"
+              class="navbar-toggle"
+              data-toggle="collapse"
+              data-target="#myNavbar"
+            >
+              <i class="fas fa-bars"></i>
+            </button>
+          </div>
+          <div
+            class="collapse navbar-collapse col-lg-6 col-md-6 col-sm-12 col-xs-12"
+            id="myNavbar"
+          >
+            <form class="hidden-lg hidden-md form-group form-search-mobile">
+              <input
+                type="text"
+                name="search"
+                placeholder="Search here..."
+                class="form-control"
+              />
+              <button type="submit">
+                <img src="img/Search.png" alt="search" class="img-responsive" />
+              </button>
+            </form>
+            <ul class="nav navbar-nav menu-main">
+              <li>
+                <figure id="btn-close-menu" class="hidden-lg hidden-md">
+                  <i class="far fa-times-circle"></i>
+                </figure>
+              </li>
+              <li class="dropdown menu-home">
+                <a
+                  href="/"
+                  id="home-menu"
+                  
+                  >Home</a
+                >
+               
+              </li>
+              <li class="shop-menu dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                  >Shop +</a
+                >
+                <figure id="shop-1" class="hidden-sm hidden-xs"></figure>
+                <div class="dropdown-menu">
+                  <div class="container container-menu">
+                    <ul class="row">
+                      <li class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                        <ul>
+                          <li
+                            class="col-lg-4 col-md-4 col-sm-12 col-xs-12 menu-home-lv2"
+                          >
+                            <ul>
+                              <li><a href="#">SHOP PAGE</a></li>
+                              <li class="li-home li-one">
+                                <i
+                                  class="fas fa-long-arrow-alt-right hidden-sm hidden-md hidden-xs"
+                                ></i
+                                ><a href="shop-right-sidebar.html"
+                                  >Right sidebar</a
+                                >
+                              </li>
+                              <li class="li-home">
+                                <i
+                                  class="fas fa-long-arrow-alt-right hidden-sm hidden-md hidden-xs"
+                                ></i
+                                ><a href="shop-left-sidebar.html"
+                                  >Left sidebar</a
+                                >
+                              </li>
+                              <li class="li-home">
+                                <i
+                                  class="fas fa-long-arrow-alt-right hidden-sm hidden-md hidden-xs"
+                                ></i
+                                ><a href="shop-full-screen.html">Full screen</a>
+                              </li>
+                              <li class="li-home">
+                                <i
+                                  class="fas fa-long-arrow-alt-right hidden-sm hidden-md hidden-xs"
+                                ></i
+                                ><a href="shop-full-width.html">Full width</a>
+                              </li>
+                              <li class="li-home">
+                                <i
+                                  class="fas fa-long-arrow-alt-right hidden-sm hidden-md hidden-xs"
+                                ></i
+                                ><a href="singel-detail.html">Singel detail</a>
+                              </li>
+                            </ul>
+                          </li>
+                          <li
+                            class="col-lg-4 col-md-4 col-sm-12 col-xs-12 menu-home-lv2"
+                          >
+                            <ul>
+                              <li><a href="#">CHECKING PAGE</a></li>
+                              <li class="li-home li-one">
+                                <i
+                                  class="fas fa-long-arrow-alt-right hidden-sm hidden-md hidden-xs"
+                                ></i
+                                ><a href="shopping-cart.html">Shopping Cart</a>
+                              </li>
+                              <li class="li-home">
+                                <i
+                                  class="fas fa-long-arrow-alt-right hidden-sm hidden-md hidden-xs"
+                                ></i
+                                ><a href="checkout.html">Checkout</a>
+                              </li>
+                              <li class="li-home">
+                                <i
+                                  class="fas fa-long-arrow-alt-right hidden-sm hidden-md hidden-xs"
+                                ></i
+                                ><a href="order.html">Order</a>
+                              </li>
+                            </ul>
+                          </li>
+                          <li
+                            class="col-lg-4 col-md-4 col-sm-12 col-xs-12 menu-home-lv2"
+                          >
+                            <ul>
+                              <li><a href="#">OTHER PAGE</a></li>
+                              <li class="li-home li-one">
+                                <i
+                                  class="fas fa-long-arrow-alt-right hidden-sm hidden-md hidden-xs"
+                                ></i
+                                ><a href="FAQ.html">FAQ</a>
+                              </li>
+                              <li class="li-home">
+                                <i
+                                  class="fas fa-long-arrow-alt-right hidden-sm hidden-md hidden-xs"
+                                ></i
+                                ><a href="login_register.html"
+                                  >Login/Register</a
+                                >
+                              </li>
+                              <li class="li-home">
+                                <i
+                                  class="fas fa-long-arrow-alt-right hidden-sm hidden-md hidden-xs"
+                                ></i
+                                ><a href="page404.html">Page404</a>
+                              </li>
+                              <li class="li-home">
+                                <i
+                                  class="fas fa-long-arrow-alt-right hidden-sm hidden-md hidden-xs"
+                                ></i
+                                ><a href="tracking.html">Tracking</a>
+                              </li>
+                              <li class="li-home">
+                                <i
+                                  class="fas fa-long-arrow-alt-right hidden-sm hidden-md hidden-xs"
+                                ></i
+                                ><a href="wishlist.html">Wishlist</a>
+                              </li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </li>
+                      <li
+                        class="col-lg-4 col-md-4 hidden-sm hidden-xs li-banner"
+                      >
+                        <a href="#"
+                          ><img
+                            src="img/Shop-now-banner.png"
+                            alt="img-holiwood"
+                        /></a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+              <li class="wedding-menu">
+                <a href="about.html">About Us</a>
+                <figure id="wedding-1" class="hidden-sm hidden-xs"></figure>
+              </li>
+              {% if userId %}
+              <li class="contact-menu">
+                <a href="/memos">Memos</a>
+                <figure id="contact-1" class="hidden-sm hidden-xs"></figure>
+              </li>
+              {% else %}
+              <li class="contact-menu">
+                <a href="contact.html">Contact</a>
+                <figure id="contact-1" class="hidden-sm hidden-xs"></figure>
+              </li>
+              {% endif %}
+              <li class="hidden-lg hidden-md">
+                <a href="/login"><i class="far fa-user"></i> My Account</a>
+              </li>
+              <li class="hidden-lg hidden-md hidden-sm phone-mobile">
+                <strong>P:</strong>800 123 654 78
+              </li>
+              <li class="hidden-lg hidden-md hidden-sm phone-mobile">
+                <strong>E:</strong>Jenstore@gmail.com
+              </li>
+            </ul>
+          </div>
+          <ul class="logo col-lg-2 col-md-2 col-sm-7 col-xs-7">
+            <li>
+              <a href="#"
+                ><img
+                  src="img/logo.png"
+                  class="img-responsive"
+                  alt="img-holiwood"
+              /></a>
+            </li>
+          </ul>
+          <ul
+            class="nav navbar-nav navbar-right icon-menu col-lg-4 col-md-4 col-sm-5 col-xs-5"
+          >
+            <li class="icon-user hidden-sm hidden-xs">
+              <a href="/login"><i class="far fa-user"></i></a>
+            </li>
+            <li class="dropdown cart-menu">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                ><img src="img/cart.png" id="img-cart" alt="img-holiwood"
+              /></a>
+              <div class="dropdown-menu">
+                <div class="cart-1">
+                  <div class="img-cart">
+                    <img
+                      src="img/collec-1.jpg"
+                      class="img-responsive"
+                      alt="img-holiwood"
+                    />
+                  </div>
+                  <div class="info-cart">
+                    <h1>Pink roses</h1>
+                    <span class="number">x1</span>
+                    <span class="prince-cart">$207.2</span>
+                  </div>
+                </div>
+                <div class="cart-1">
+                  <div class="img-cart">
+                    <img
+                      src="img/collec-2.jpg"
+                      class="img-responsive"
+                      alt="img-holiwood"
+                    />
+                  </div>
+                  <div class="info-cart">
+                    <h1>Eleganr by BloomNation</h1>
+                    <span class="number">x1</span>
+                    <span class="prince-cart">$207.2</span>
+                  </div>
+                </div>
+                <div class="cart-1">
+                  <div class="img-cart">
+                    <img
+                      src="img/collec-3.jpg"
+                      class="img-responsive"
+                      alt="img-holiwood"
+                    />
+                  </div>
+                  <div class="info-cart">
+                    <h1>Queen Rose - Yellow</h1>
+                    <span class="number">x1</span>
+                    <span class="prince-cart">$207.2</span>
+                  </div>
+                </div>
+                <div class="total">
+                  <span>Total:</span>
+                  <span>$621.6</span>
+                </div>
+                <div id="div-cart-menu">
+                  <a href="#">ADD TO CART</a>
+                  <a href="#" class="check">CHECK VIEW</a>
+                </div>
+              </div>
+            </li>
+            <li id="input-search" class="hidden-sm hidden-xs">
+              <a href="#"><img src="img/Search.png" alt="img-holiwood" /></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div class="content-search">
+        <div class="container container-100">
+          <i class="far fa-times-circle" id="close-search"></i>
+          <h3 class="text-center">what are your looking for ?</h3>
+          <form
+            method="get"
+            action="http://landing.engotheme.com/search"
+            role="search"
+            style="position: relative"
+          >
+            <input
+              type="text"
+              class="form-control control-search"
+              value=""
+              autocomplete="off"
+              placeholder="Enter Search ..."
+              aria-label="SEARCH"
+              name="q"
+            />
+
+            <button class="button_search" type="submit">search</button>
+          </form>
+        </div>
+      </div>
+      {% block content %}{% endblock %}
+    </main>
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 info-footer">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+              <h3>About</h3>
+              <ul>
+                <li>
+                  <i class="fas fa-long-arrow-alt-right"></i
+                  ><a href="#">News & Stories</a>
+                </li>
+                <li>
+                  <i class="fas fa-long-arrow-alt-right"></i
+                  ><a href="#">History</a>
+                </li>
+                <li>
+                  <i class="fas fa-long-arrow-alt-right"></i
+                  ><a href="#">Our Studio</a>
+                </li>
+                <li>
+                  <i class="fas fa-long-arrow-alt-right"></i
+                  ><a href="#">Shop</a>
+                </li>
+                <li>
+                  <i class="fas fa-long-arrow-alt-right"></i
+                  ><a href="#">Stockists</a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+              <h3>Customer sevices</h3>
+              <ul>
+                <li>
+                  <i class="fas fa-long-arrow-alt-right"></i
+                  ><a href="#">Contact Us</a>
+                </li>
+                <li>
+                  <i class="fas fa-long-arrow-alt-right"></i
+                  ><a href="#">Trade Services</a>
+                </li>
+                <li>
+                  <i class="fas fa-long-arrow-alt-right"></i
+                  ><a href="#">Login/Register</a>
+                </li>
+                <li>
+                  <i class="fas fa-long-arrow-alt-right"></i
+                  ><a href="#">Delivery & Returns</a>
+                </li>
+                <li>
+                  <i class="fas fa-long-arrow-alt-right"></i
+                  ><a href="#">FAQs</a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+              <h3>Store</h3>
+              <ul>
+                <li>
+                  <i class="fas fa-long-arrow-alt-right"></i
+                  ><a href="#">Shop</a>
+                </li>
+                <li>
+                  <i class="fas fa-long-arrow-alt-right"></i
+                  ><a href="#">Wedding</a>
+                </li>
+                <li>
+                  <i class="fas fa-long-arrow-alt-right"></i
+                  ><a href="#">Holiday</a>
+                </li>
+              </ul>
+            </div>
+            <div class="social-text">
+              <span id="text-connect">CONNECT WITH US:</span>
+              <span class="social"
+                ><a href="#" id="instar"></a><a href="#" id="fb"></a
+                ><a href="#" id="tw"></a><a href="#" id="sky"></a
+              ></span>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 new-letter">
+            <div class="form-new">
+              <h1>Newsletter</h1>
+              <p>
+                Sign up for our mailing list to get lastest updates and offers
+              </p>
+              <form class="form-group">
+                <input
+                  type="text"
+                  name="input-mail"
+                  placeholder="Your mail here"
+                  class="form-control input-lg"
+                />
+                <button type="submit">Subscribe</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-logo">
+        <div class="row footer-row">
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <a href="#" class="logo-bot"></a>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 cop">
+            <span>Copyright</span><i class="far fa-copyright"></i
+            ><span>2018 by EngoTheme</span>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <span id="gmail-footer"><a href="#">E: Jenstore@gmail.com</a></span>
+          </div>
+        </div>
+      </div>
+      <div class="hidden-lg hidden-md back-to-top fade">
+        <i class="fas fa-caret-up"></i>
+      </div>
+      <div class="BG-menu"></div>
+      <!-- Modal quick view -->
+      <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">
+                &times;
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="tab-content col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div id="img-pill-1" class="tab-pane fade in active">
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div
+                      class="col-lg-3 col-md-3 col-sm-3 col-xs-12 title-quick"
+                    >
+                      <figure class="fi-quick"><h1>QUICK VIEW</h1></figure>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                      <img
+                        src="img/wedding-1.jpg"
+                        class="img-responsive"
+                        alt="holiwood"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 detail">
+                    <h1>Queen Rose - Pink</h1>
+                    <p class="p1">
+                      It is a long established fact that a reader will be
+                      distracted by the readable content of a page when looking
+                      at its layout.
+                    </p>
+                    <div class="star">
+                      <i class="fas fa-star"></i><i class="fas fa-star"></i
+                      ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                      ><i class="fas fa-star"></i>
+                      <span>10 Rating(s) | Add Your Rating</span>
+                    </div>
+                    <div class="prince">
+                      <span>$250.9</span><s class="strike">$300.02</s>
+                    </div>
+                    <figure class="fi-option">
+                      <p class="option">Option</p>
+                    </figure>
+                    <div class="size">
+                      <span class="lb-size"
+                        >Size <span class="sta-red">*</span></span
+                      ><span class="lb-color"
+                        >Color <span class="sta-red">*</span></span
+                      >
+                    </div>
+                    <div class="select-custom">
+                      <select>
+                        <option>S</option>
+                        <option>M</option>
+                        <option>L</option>
+                        <option>XL</option>
+                      </select>
+                      <a href="#"><span class="color-1"></span></a>
+                      <a href="#"><span class="color-2"></span></a>
+                      <a href="#"><span class="color-3"></span></a>
+                      <a href="#"><span class="color-4"></span></a>
+                      <p class="require">Required Fields <span>*</span></p>
+                      <div class="Quality">
+                        <div class="input-group input-number-group">
+                          <span class="text-qua">Quanty:</span>
+                          <div class="input-group-button">
+                            <span class="input-number-decrement">-</span>
+                          </div>
+                          <input
+                            class="input-number"
+                            type="number"
+                            min="0"
+                            max="1000"
+                            value="01"
+                          />
+                          <div class="input-group-button">
+                            <span class="input-number-increment">+</span>
+                          </div>
+                          <span class="dola">$ </span
+                          ><span class="total">250.9</span>
+                        </div>
+                      </div>
+                      <div class="add-cart">
+                        <a href="#" class="btn-add-cart">Add to cart</a>
+                        <a href="#" class="list-icon icon-1"
+                          ><i class="far fa-eye"></i
+                        ></a>
+                        <a href="#" class="list-icon icon-2"
+                          ><i class="far fa-heart"></i
+                        ></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="img-pill-2" class="tab-pane fade">
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div
+                      class="col-lg-3 col-md-3 col-sm-3 col-xs-12 title-quick"
+                    >
+                      <figure class="fi-quick"><h1>QUICK VIEW</h1></figure>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                      <img
+                        src="img/queen.jpg"
+                        class="img-responsive"
+                        alt="holiwood"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 detail">
+                    <h1>Queen Rose</h1>
+                    <p class="p1">
+                      It is a long established fact that a reader will be
+                      distracted by the readable content of a page when looking
+                      at its layout.
+                    </p>
+                    <div class="star">
+                      <i class="fas fa-star"></i><i class="fas fa-star"></i
+                      ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                      ><i class="fas fa-star"></i>
+                      <span>10 Rating(s) | Add Your Rating</span>
+                    </div>
+                    <div class="prince">
+                      <span>$300.02</span><s class="strike">$250.9</s>
+                    </div>
+                    <figure class="fi-option">
+                      <p class="option">Option</p>
+                    </figure>
+                    <div class="size">
+                      <span class="lb-size"
+                        >Size <span class="sta-red">*</span></span
+                      ><span class="lb-color"
+                        >Color <span class="sta-red">*</span></span
+                      >
+                    </div>
+                    <div class="select-custom">
+                      <select>
+                        <option>S</option>
+                        <option>M</option>
+                        <option>L</option>
+                        <option>XL</option>
+                      </select>
+                      <a href="#"><span class="color-1"></span></a>
+                      <a href="#"><span class="color-2"></span></a>
+                      <a href="#"><span class="color-3"></span></a>
+                      <a href="#"><span class="color-4"></span></a>
+                      <p class="require">Required Fields <span>*</span></p>
+                      <div class="Quality">
+                        <div class="input-group input-number-group">
+                          <span class="text-qua">Quanty:</span>
+                          <div class="input-group-button">
+                            <span class="input-number-decrement">-</span>
+                          </div>
+                          <input
+                            class="input-number"
+                            type="number"
+                            min="0"
+                            max="1000"
+                            value="01"
+                          />
+                          <div class="input-group-button">
+                            <span class="input-number-increment">+</span>
+                          </div>
+                          <span class="dola">$ </span
+                          ><span class="total">250.9</span>
+                        </div>
+                      </div>
+                      <div class="add-cart">
+                        <a href="#" class="btn-add-cart">Add to cart</a>
+                        <a href="#" class="list-icon icon-1"
+                          ><i class="far fa-eye"></i
+                        ></a>
+                        <a href="#" class="list-icon icon-2"
+                          ><i class="far fa-heart"></i
+                        ></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="img-pill-3" class="tab-pane fade">
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div
+                      class="col-lg-3 col-md-3 col-sm-3 col-xs-12 title-quick"
+                    >
+                      <figure class="fi-quick"><h1>QUICK VIEW</h1></figure>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                      <img
+                        src="img/laven.jpg"
+                        class="img-responsive"
+                        alt="holiwood"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 detail">
+                    <h1>Lavender</h1>
+                    <p class="p1">
+                      It is a long established fact that a reader will be
+                      distracted by the readable content of a page when looking
+                      at its layout.
+                    </p>
+                    <div class="star">
+                      <i class="fas fa-star"></i><i class="fas fa-star"></i
+                      ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                      ><i class="fas fa-star"></i>
+                      <span>10 Rating(s) | Add Your Rating</span>
+                    </div>
+                    <div class="prince">
+                      <span>$300.02</span><s class="strike">$250.9</s>
+                    </div>
+                    <figure class="fi-option">
+                      <p class="option">Option</p>
+                    </figure>
+                    <div class="size">
+                      <span class="lb-size"
+                        >Size <span class="sta-red">*</span></span
+                      ><span class="lb-color"
+                        >Color <span class="sta-red">*</span></span
+                      >
+                    </div>
+                    <div class="select-custom">
+                      <select>
+                        <option>S</option>
+                        <option>M</option>
+                        <option>L</option>
+                        <option>XL</option>
+                      </select>
+                      <a href="#"><span class="color-1"></span></a>
+                      <a href="#"><span class="color-2"></span></a>
+                      <a href="#"><span class="color-3"></span></a>
+                      <a href="#"><span class="color-4"></span></a>
+                      <p class="require">Required Fields <span>*</span></p>
+                      <div class="Quality">
+                        <div class="input-group input-number-group">
+                          <span class="text-qua">Quanty:</span>
+                          <div class="input-group-button">
+                            <span class="input-number-decrement">-</span>
+                          </div>
+                          <input
+                            class="input-number"
+                            type="number"
+                            min="0"
+                            max="1000"
+                            value="01"
+                          />
+                          <div class="input-group-button">
+                            <span class="input-number-increment">+</span>
+                          </div>
+                          <span class="dola">$ </span
+                          ><span class="total">250.9</span>
+                        </div>
+                      </div>
+                      <div class="add-cart">
+                        <a href="#" class="btn-add-cart">Add to cart</a>
+                        <a href="#" class="list-icon icon-1"
+                          ><i class="far fa-eye"></i
+                        ></a>
+                        <a href="#" class="list-icon icon-2"
+                          ><i class="far fa-heart"></i
+                        ></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="img-pill-4" class="tab-pane fade">
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div
+                      class="col-lg-3 col-md-3 col-sm-3 col-xs-12 title-quick"
+                    >
+                      <figure class="fi-quick"><h1>QUICK VIEW</h1></figure>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                      <img
+                        src="img/collec-3.jpg"
+                        class="img-responsive"
+                        alt="holiwood"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 detail">
+                    <h1>Queen Rose - Yellow</h1>
+                    <p class="p1">
+                      It is a long established fact that a reader will be
+                      distracted by the readable content of a page when looking
+                      at its layout.
+                    </p>
+                    <div class="star">
+                      <i class="fas fa-star"></i><i class="fas fa-star"></i
+                      ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                      ><i class="fas fa-star"></i>
+                      <span>10 Rating(s) | Add Your Rating</span>
+                    </div>
+                    <div class="prince">
+                      <span>$300.02</span><s class="strike">$250.9</s>
+                    </div>
+                    <figure class="fi-option">
+                      <p class="option">Option</p>
+                    </figure>
+                    <div class="size">
+                      <span class="lb-size"
+                        >Size <span class="sta-red">*</span></span
+                      ><span class="lb-color"
+                        >Color <span class="sta-red">*</span></span
+                      >
+                    </div>
+                    <div class="select-custom">
+                      <select>
+                        <option>S</option>
+                        <option>M</option>
+                        <option>L</option>
+                        <option>XL</option>
+                      </select>
+                      <a href="#"><span class="color-1"></span></a>
+                      <a href="#"><span class="color-2"></span></a>
+                      <a href="#"><span class="color-3"></span></a>
+                      <a href="#"><span class="color-4"></span></a>
+                      <p class="require">Required Fields <span>*</span></p>
+                      <div class="Quality">
+                        <div class="input-group input-number-group">
+                          <span class="text-qua">Quanty:</span>
+                          <div class="input-group-button">
+                            <span class="input-number-decrement">-</span>
+                          </div>
+                          <input
+                            class="input-number"
+                            type="number"
+                            min="0"
+                            max="1000"
+                            value="01"
+                          />
+                          <div class="input-group-button">
+                            <span class="input-number-increment">+</span>
+                          </div>
+                          <span class="dola">$ </span
+                          ><span class="total">250.9</span>
+                        </div>
+                      </div>
+                      <div class="add-cart">
+                        <a href="#" class="btn-add-cart">Add to cart</a>
+                        <a href="#" class="list-icon icon-1"
+                          ><i class="far fa-eye"></i
+                        ></a>
+                        <a href="#" class="list-icon icon-2"
+                          ><i class="far fa-heart"></i
+                        ></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <ul
+                class="nav nav-pills col-lg-6 col-md-6 col-sm-6 col-xs-12 img-pill"
+              >
+                <li class="active col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                  <a data-toggle="pill" href="#img-pill-1"
+                    ><img
+                      src="img/wedding-1.jpg"
+                      class="img-responsive"
+                      alt="holiwood"
+                  /></a>
+                </li>
+                <li class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                  <a data-toggle="pill" href="#img-pill-2"
+                    ><img
+                      src="img/queen.jpg"
+                      class="img-responsive"
+                      alt="holiwood"
+                  /></a>
+                </li>
+                <li class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                  <a data-toggle="pill" href="#img-pill-3"
+                    ><img
+                      src="img/laven.jpg"
+                      class="img-responsive"
+                      alt="holiwood"
+                  /></a>
+                </li>
+                <li class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                  <a data-toggle="pill" href="#img-pill-4"
+                    ><img
+                      src="img/collec-3.jpg"
+                      class="img-responsive"
+                      alt="holiwood"
+                  /></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- --------------------------- -->
+    </footer>
+
+    <!-- boostrap & jquery -->
+    <script src="js/jquery.min_af.js"></script>
+    <script src="js/bootstrap.min_0028.js"></script>
+    <!-- js file -->
+    <script src="js/function-homev1.js"></script>
+    <script src="js/function-sidebar.js"></script>
+    <script src="js/function-back-top.js"></script>
+    <script src="js/function-select-custom.js"></script>
+    <script src="js/function-search-v2.js"></script>
+    <!-- scroll js -->
+    <script type="text/javascript" src="scrolling/TweenMax.min.js"></script>
+    <script src="scrolling/jquery.superscrollorama.js"></script>
+    <script src="js/function-scroll.js"></script>
+  </body>
+
+  <!-- Mirrored from landing.engotheme.com/html/jenstore/demo/homev1.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 11 Jan 2022 11:39:11 GMT -->
+</html>

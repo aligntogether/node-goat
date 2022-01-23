@@ -1,0 +1,112 @@
+{% extends './layouts/home.html' %} {% block content %} {% block css %}
+<!-- <link rel="stylesheet" type="text/css" href="css/style-about.css" /> -->
+<link rel="stylesheet" type="text/css" href="css/style-res-about.css" />
+<link rel="stylesheet" type="text/css" href="css/style-faq.css" />
+<link rel="stylesheet" type="text/css" href="css/style-login.css" />
+<link rel="stylesheet" type="text/css" href="css/style-fix-nav.css" />
+{% endblock %}
+<div style="height: 200px"></div>
+<div class="container container-ver2">
+  <div class="page-login box space-50">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3 sign-in space-30">
+        <h3>Sign Up</h3>
+        <p>Create an account.</p>
+
+        <!-- End social -->
+        {% if userNameError || firstNameError || lastNameError || passwordError || verifyError || emailError %}
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="alert alert-dismissable alert-danger">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <p>{{userNameError}}{{firstNameError}}{{lastNameError}}{{passwordError}}{{verifyError}}{{emailError}}</p>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        <form class="form-horizontal" method="POST">
+          <div class="group box space-20">
+            <label class="control-label" for="inputemail">User Name *</label>
+            <input
+              class="form-control"
+              type="text"
+              placeholder="Your username"
+              id="inputemail"
+              name="userName"
+              value="{{userName}}"
+            />
+          </div>
+          <div class="group box space-20">
+            <label for="firstName">First Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="firstName"
+              value="{{firstName}}"
+              name="firstName"
+              placeholder="Enter first name"
+            />
+          </div>
+
+          <div class="group box space-20">
+            <label for="lastName">Last Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="lastName"
+              value="{{lastName}}"
+              name="lastName"
+              placeholder="Enter last name"
+            />
+          </div>
+          <div class="group box space-20">
+            <label for="verify">Verify Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="verify"
+              name="verify"
+              value="{{verify}}"
+              placeholder="Enter password"
+            />
+          </div>
+
+          <div class="group box space-20">
+            <label for="verify">Email (Optional)</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              name="email"
+              value="{{email}}"
+              placeholder="Enter email"
+            />
+          </div>
+          <div class="group box">
+            <label class="control-label" for="inputemail">PASSWORD *</label>
+            <input
+              class="form-control"
+              type="text"
+              placeholder="Password"
+              name="password"
+              value="{{password}}"
+              id="inputpass"
+            />
+          </div>
+          <input type="hidden" name="_csrf" value="{{csrftoken}}" />
+          <div class="remember">
+            <!-- <input id="remeber" type="checkbox" name="check" value="remeber" />
+            <label for="remeber" class="label-check">remember me!</label> -->
+            <!-- <a class="help" href="#" title="help ?">Fogot your password?</a> -->
+            <a class="help" title="register?" href="/login"> or Login now?</a>
+          </div>
+          <button type="submit" class="link-v1 rt">Create Account</button>
+        </form>
+        <!-- End form -->
+      </div>
+      <!-- End col-md-6 -->
+    </div>
+  </div>
+</div>
+
+{% endblock %}

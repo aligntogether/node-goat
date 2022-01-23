@@ -1,0 +1,88 @@
+{% extends './layouts/home.html' %} {% block content %} {% block css %}
+<!-- <link rel="stylesheet" type="text/css" href="css/style-about.css" /> -->
+<link rel="stylesheet" type="text/css" href="css/style-res-about.css" />
+<link rel="stylesheet" type="text/css" href="css/style-faq.css" />
+<link rel="stylesheet" type="text/css" href="css/style-login.css" />
+<link rel="stylesheet" type="text/css" href="css/style-fix-nav.css" />
+{% endblock %}
+<div class="banner">
+  <div class="container">
+    <figure id="banner-about">
+      <a href="#"
+        ><img
+          src="img/banner-about.jpg"
+          class="img-responsive"
+          alt="img-holiwood"
+      /></a>
+    </figure>
+   
+  </div>
+</div>
+<div class="container container-ver2">
+  <div class="page-login box space-50">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3 sign-in space-30">
+        <h3>sign in</h3>
+        <p>Hello, welcome to your account.</p>
+        <div class="social space-30 box">
+          <a class="float-left" href="#" title="facebook">
+            <i class="fab fa-facebook-f"></i>
+            SIGN IN WITH FACEBOOK
+          </a>
+          <a class="float-right" href="#" title="TWITTER">
+            <i class="fab fa-twitter"></i>
+            SIGN IN WITH TWITTER
+          </a>
+        </div>
+        <!-- End social -->
+        {% if loginError %}
+        <div class="alert alert-dismissable alert-danger">
+          <button type="button" class="close" data-dismiss="alert">
+            &times;
+          </button>
+          {{loginError}}
+        </div>
+        {% endif %}
+        <form class="form-horizontal" method="POST">
+          <div class="group box space-20">
+            <label class="control-label" for="inputemail"
+              >EMAIL ADDRESS *</label
+            >
+            <input
+              class="form-control"
+              type="text"
+              placeholder="Your email"
+              id="inputemail"
+              name="userName"
+              value="{{userName}}"
+            />
+          </div>
+          <div class="group box">
+            <label class="control-label" for="inputemail">PASSWORD *</label>
+            <input
+              class="form-control"
+              type="text"
+              placeholder="Password"
+              name="password"
+              value="{{password}}"
+              id="inputpass"
+            />
+          </div>
+          <input type="hidden" name="_csrf" value="{{csrftoken}}" />
+          <div class="remember">
+            <input id="remeber" type="checkbox" name="check" value="remeber" />
+            <label for="remeber" class="label-check">remember me!</label>
+            <!-- <a class="help" href="#" title="help ?">Fogot your password?</a> -->
+            <a class="help" title="register?" href="/signup"> or create an account?</a>
+          </div>
+          <button type="submit" class="link-v1 rt">LOGIN NOW</button>
+        </form>
+        <!-- End form -->
+      </div>
+      <!-- End col-md-6 -->
+     
+    </div>
+  </div>
+</div>
+
+{% endblock %}

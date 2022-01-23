@@ -1,0 +1,16 @@
+/*------------------------------------
+	[Table of contents]
+	1. Body
+	2. Header / #header
+	3. Navigation / #navbar
+	4. Content / #content
+	5. Sidebar / #sidebar
+	6. Search / #search
+	7. Footer / #footer
+	
+--------------------------------------*/
+@media (min-width: 1200px) {
+  .show-select {
+    padding: 0 0 0 168px !important; } }
+
+/*# sourceMappingURL=style-full-screen.css.map */
