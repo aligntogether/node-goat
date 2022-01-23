@@ -84,12 +84,8 @@ const index = (app, db) => {
   // app.get("/memos", isLoggedIn, memosHandler.displayMemos);
   app.post("/memos", isLoggedIn, memosHandler.addMemos);
 
- 
-
- 
-
   // Research Page
-  app.get("/research", isLoggedIn, researchHandler.displayResearch);
+  app.get("/research", researchHandler.displayResearch);
 
   // Error handling middleware
   app.use(ErrorHandler);

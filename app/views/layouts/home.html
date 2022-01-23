@@ -81,11 +81,14 @@
             class="collapse navbar-collapse col-lg-6 col-md-6 col-sm-12 col-xs-12"
             id="myNavbar"
           >
-            <form class="hidden-lg hidden-md form-group form-search-mobile">
+            <form
+              class="hidden-lg hidden-md form-group form-search-mobile"
+              action="/research"
+            >
               <input
                 type="text"
-                name="search"
-                placeholder="Search here..."
+                name="url"
+                placeholder="Search here...| https://www.fnp.com/flowers"
                 class="form-control"
               />
               <button type="submit">
@@ -99,13 +102,7 @@
                 </figure>
               </li>
               <li class="dropdown menu-home">
-                <a
-                  href="/"
-                  id="home-menu"
-                  
-                  >Home</a
-                >
-               
+                <a href="/" id="home-menu">Home</a>
               </li>
               <li class="shop-menu dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"
@@ -348,9 +345,10 @@
         <div class="container container-100">
           <i class="far fa-times-circle" id="close-search"></i>
           <h3 class="text-center">what are your looking for ?</h3>
+          <p>Got some other offers? paste a link here, we will try to get you the best we could.</p>
           <form
             method="get"
-            action="http://landing.engotheme.com/search"
+            action="/research"
             role="search"
             style="position: relative"
           >
@@ -359,9 +357,9 @@
               class="form-control control-search"
               value=""
               autocomplete="off"
-              placeholder="Enter Search ..."
+              placeholder="Enter Search ...| https://www.fnp.com/flowers"
               aria-label="SEARCH"
-              name="q"
+              name="url"
             />
 
             <button class="button_search" type="submit">search</button>
