@@ -13,7 +13,7 @@ const USERS_TO_INSERT = [
     {
         "_id": 1,
         "userName": "admin",
-        "firstName": "Node Goat",
+        "firstName": "admin",
         "lastName": "Admin",
         "password": "Admin_123",
         //"password" : "$2a$10$8Zo/1e8KM8QzqOKqbDlYlONBOzukWXrM.IiyzqHRYDXqwB3gzDsba", // Admin_123
