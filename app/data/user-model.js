@@ -1,15 +1,15 @@
 const bcrypt = require("bcrypt-nodejs");
 
-/* The UserDAO must be constructed with a connected database object */
-function UserDAO(db) {
+/* The UserModel must be constructed with a connected database object */
+function UserModel(db) {
 
     "use strict";
 
     /* If this constructor is called without the "new" operator, "this" points
      * to the global object. Log a warning and call it correctly. */
-    if (false === (this instanceof UserDAO)) {
-        console.log("Warning: UserDAO constructor called without 'new' operator");
-        return new UserDAO(db);
+    if (false === (this instanceof UserModel)) {
+        console.log("Warning: UserModel constructor called without 'new' operator");
+        return new UserModel(db);
     }
 
     const usersCol = db.collection("users");
@@ -120,4 +120,4 @@ function UserDAO(db) {
     };
 }
 
-module.exports = { UserDAO };
+module.exports = {UserModel };

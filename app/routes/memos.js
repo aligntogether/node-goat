@@ -1,10 +1,10 @@
-const MemosDAO = require("../data/memos-dao").MemosDAO;
+const MemosModel = require("../data/memos-model").MemosModel;
 const { environmentalScripts } = require("../../config/config");
 
 function MemosHandler(db) {
   "use strict";
 
-  const memosDAO = new MemosDAO(db);
+  const memosDAO = new MemosModel(db);
 
   this.addMemos = (req, res, next) => {
     memosDAO.insert(req.body.memo, (err, docs) => {

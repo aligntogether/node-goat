@@ -1,13 +1,13 @@
-const ResearchDAO = require("../data/research-dao").ResearchDAO;
+// const ResearchDAO = require("../data/research-dao").ResearchDAO;
 const needle = require("needle");
 const { environmentalScripts } = require("../../config/config");
 
-function ResearchHandler(db) {
+function SearchHandler(db) {
   "use strict";
 
-  const researchDAO = new ResearchDAO(db);
+  // const researchDAO = new ResearchDAO(db);
 
-  this.displayResearch = (req, res) => {
+  this.displaySearch = (req, res) => {
     const url = req.query.url;
     if (url) {
       return needle.get(url, (error, newResponse, body) => {
@@ -24,10 +24,10 @@ function ResearchHandler(db) {
         return res.end();
       });
     }
-    return res.render("research", {
+    return res.render("search", {
       environmentalScripts,
     });
   };
 }
 
-module.exports = ResearchHandler;
+module.exports = SearchHandler;

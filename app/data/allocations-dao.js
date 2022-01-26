@@ -1,4 +1,4 @@
-const UserDAO = require("./user-dao").UserDAO;
+const UserModel = require("./user-model").UserModel;
 
 /* The AllocationsDAO must be constructed with a connected database object */
 const AllocationsDAO = function(db){
@@ -13,7 +13,7 @@ const AllocationsDAO = function(db){
     }
 
     const allocationsCol = db.collection("allocations");
-    const userDAO = new UserDAO(db);
+    const user = new UserModel(db);
 
     this.update = (userId, stocks, funds, bonds, callback) => {
         const parsedUserId = parseInt(userId);
@@ -36,7 +36,7 @@ const AllocationsDAO = function(db){
 
                 console.log("Updated allocations");
 
-                userDAO.getUserById(userId, (err, user) => {
+                user.getUserById(userId, (err, user) => {
 
                     if (err) return callback(err, null);
 
@@ -91,7 +91,7 @@ const AllocationsDAO = function(db){
             const userAllocations = [];
 
             allocations.forEach( alloc => {
-                userDAO.getUserById(alloc.userId, (err, user) => {
+                user.getUserById(alloc.userId, (err, user) => {
                     if (err) return callback(err, null);
 
                     alloc.userName = user.userName;

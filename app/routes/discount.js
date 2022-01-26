@@ -18,7 +18,7 @@ function ContributionsHandler(db) {
             if (error) return next(error);
 
             contrib.userId = userId; //set for nav menu items
-            return res.render("contributions", {
+            return res.render("discount", {
                 ...contrib,
                 environmentalScripts
             });
@@ -47,7 +47,7 @@ function ContributionsHandler(db) {
         const validations = [isNaN(preTax), isNaN(afterTax), isNaN(roth), preTax < 0, afterTax < 0, roth < 0]
         const isInvalid = validations.some(validation => validation)
         if (isInvalid) {
-            return res.render("contributions", {
+            return res.render("discount", {
                 updateError: "Invalid contribution percentages",
                 userId,
                 environmentalScripts
@@ -55,7 +55,7 @@ function ContributionsHandler(db) {
         }
         // Prevent more than 30% contributions
         if (preTax + afterTax + roth > 30) {
-            return res.render("contributions", {
+            return res.render("discount", {
                 updateError: "Contribution percentages cannot exceed 30 %",
                 userId,
                 environmentalScripts
@@ -67,7 +67,7 @@ function ContributionsHandler(db) {
             if (err) return next(err);
 
             contributions.updateSuccess = true;
-            return res.render("contributions", {
+            return res.render("discount", {
                 ...contributions,
                 environmentalScripts
             });

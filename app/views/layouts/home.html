@@ -83,7 +83,7 @@
           >
             <form
               class="hidden-lg hidden-md form-group form-search-mobile"
-              action="/research"
+              action="/search"
             >
               <input
                 type="text"
@@ -127,7 +127,7 @@
               </li>
               {% endif %}
               <li class="hidden-lg hidden-md">
-                <a href="/login"><i class="far fa-user"></i> My Account</a>
+                <a href="/user-profile"><i class="far fa-user"></i> My Account</a>
               </li>
               <li class="hidden-lg hidden-md hidden-sm phone-mobile">
                 <strong>P:</strong>800 123 654 78
@@ -152,10 +152,10 @@
             class="nav navbar-nav navbar-right icon-menu col-lg-4 col-md-4 col-sm-5 col-xs-5"
           >
             <li class="icon-user hidden-sm hidden-xs">
-              <a href="/login"><i class="far fa-user"></i></a>
+              <a href="/user-profile"><i class="far fa-user"></i></a>
             </li>
             <li class="dropdown cart-menu">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+              <a href="/cart" class="dropdown-toggle" data-toggle="dropdown"
                 ><img src="img/cart.png" id="img-cart" alt="img-holiwood"
               /></a>
               <div class="dropdown-menu">
@@ -206,8 +206,8 @@
                   <span>$621.6</span>
                 </div>
                 <div id="div-cart-menu">
-                  <a href="#">ADD TO CART</a>
-                  <a href="#" class="check">CHECK VIEW</a>
+                  <a href="/cart">ADD TO CART</a>
+                  <a href="/cart" class="check">CHECK VIEW</a>
                 </div>
               </div>
             </li>
@@ -226,7 +226,7 @@
           <p>Got some other offers? paste a link here, we will try to get you the best we could.</p>
           <form
             method="get"
-            action="/research"
+            action=""/search""
             role="search"
             style="position: relative"
           >
@@ -448,7 +448,7 @@
                         </div>
                       </div>
                       <div class="add-cart">
-                        <a href="#" class="btn-add-cart">Add to cart</a>
+                        <a href="/cart" class="btn-add-cart">Add to cart</a>
                         <a href="#" class="list-icon icon-1"
                           ><i class="far fa-eye"></i
                         ></a>

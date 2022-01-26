@@ -1,10 +1,10 @@
 const SessionHandler = require("./session");
 const ProfileHandler = require("./profile");
 const BenefitsHandler = require("./benefits");
-const ContributionsHandler = require("./contributions");
+const DiscountHandler = require("./discount");
 const AllocationsHandler = require("./allocations");
 const MemosHandler = require("./memos");
-const ResearchHandler = require("./research");
+const SearchHandler = require("./search");
 const { environmentalScripts } = require("../../config/config");
 const ErrorHandler = require("./error").errorHandler;
 
@@ -14,10 +14,10 @@ const index = (app, db) => {
   const sessionHandler = new SessionHandler(db);
   const profileHandler = new ProfileHandler(db);
   const benefitsHandler = new BenefitsHandler(db);
-  const contributionsHandler = new ContributionsHandler(db);
+  const discountsHandler = new DiscountHandler(db);
   const allocationsHandler = new AllocationsHandler(db);
   const memosHandler = new MemosHandler(db);
-  const researchHandler = new ResearchHandler(db);
+  const searchHandler = new SearchHandler(db);
 
   // Middleware to check if a user is logged in
   const isLoggedIn = sessionHandler.isLoggedInMiddleware;
@@ -31,6 +31,7 @@ const index = (app, db) => {
   // Login form
   app.get("/login", sessionHandler.displayLoginPage);
   app.post("/login", sessionHandler.handleLoginRequestUser);
+  app.get("/cart", sessionHandler.displayCart);
   app.get("/admin", sessionHandler.displayLoginPageAdmin);
   app.post("/admin", sessionHandler.handleLoginRequest);
 
@@ -42,7 +43,7 @@ const index = (app, db) => {
   app.get("/logout", sessionHandler.displayLogoutPage);
 
   // The main page of the app
-  app.get("/dashboard", isLoggedIn, sessionHandler.displayWelcomePage);
+  app.get("/dashboard", isLoggedIn, sessionHandler.displayDashPage);
 
   // Profile page
   // app.get("/profile", isLoggedIn, profileHandler.displayProfile);
@@ -54,14 +55,14 @@ const index = (app, db) => {
 
   // Contributions Page
   app.get(
-    "/contributions",
+    "/discount",
     isLoggedIn,
-    contributionsHandler.displayContributions
+    discountsHandler.displayContributions
   );
   app.post(
-    "/contributions",
+    "/discount",
     isLoggedIn,
-    contributionsHandler.handleContributionsUpdate
+    discountsHandler.handleContributionsUpdate
   );
 
   // Benefits Page
@@ -84,8 +85,8 @@ const index = (app, db) => {
   // app.get("/memos", isLoggedIn, memosHandler.displayMemos);
   app.post("/memos", isLoggedIn, memosHandler.addMemos);
 
-  // Research Page
-  app.get("/research", researchHandler.displayResearch);
+  // Search Page
+  app.get("/search", searchHandler.displaySearch);
 
   // Error handling middleware
   app.use(ErrorHandler);

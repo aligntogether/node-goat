@@ -1,13 +1,13 @@
-/* The MemosDAO must be constructed with a connected database object */
-function MemosDAO(db) {
+/* The MemosModel must be constructed with a connected database object */
+function MemosModel(db) {
 
     "use strict";
 
     /* If this constructor is called without the "new" operator, "this" points
      * to the global object. Log a warning and call it correctly. */
-    if (false === (this instanceof MemosDAO)) {
-        console.log("Warning: MemosDAO constructor called without 'new' operator");
-        return new MemosDAO(db);
+    if (false === (this instanceof MemosModel)) {
+        console.warn("Warning: MemosModel constructor called without 'new' operator");
+        return new MemosModel(db);
     }
 
     const memosCol = db.collection("memos");
@@ -36,4 +36,4 @@ function MemosDAO(db) {
 
 }
 
-module.exports = { MemosDAO };
+module.exports = {MemosModel };

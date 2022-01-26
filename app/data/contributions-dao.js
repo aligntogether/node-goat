@@ -1,4 +1,4 @@
-const UserDAO = require("./user-dao").UserDAO;
+const UserModel = require("./user-model").UserModel;
 
 /* The ContributionsDAO must be constructed with a connected database object */
 function ContributionsDAO(db) {
@@ -12,7 +12,7 @@ function ContributionsDAO(db) {
     }
 
     const contributionsDB = db.collection("contributions");
-    const userDAO = new UserDAO(db);
+    const user = new UserModel(db);
 
     this.update = (userId, preTax, afterTax, roth, callback) => {
         const parsedUserId = parseInt(userId);
@@ -35,7 +35,7 @@ function ContributionsDAO(db) {
                 if (!err) {
                     console.log("Updated contributions");
                     // add user details
-                    userDAO.getUserById(parsedUserId, (err, user) => {
+                    user.getUserById(parsedUserId, (err, user) => {
 
                         if (err) return callback(err, null);
 
@@ -68,7 +68,7 @@ function ContributionsDAO(db) {
                 };
 
                 // add user details
-                userDAO.getUserById(userId, (err, user) => {
+                user.getUserById(userId, (err, user) => {
 
                     if (err) return callback(err, null);
                     contributions.userName = user.userName;

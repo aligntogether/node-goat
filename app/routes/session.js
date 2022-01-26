@@ -1,4 +1,4 @@
-const UserDAO = require("../data/user-dao").UserDAO;
+const UserModel = require("../data/user-model").UserModel;
 const AllocationsDAO = require("../data/allocations-dao").AllocationsDAO;
 const { environmentalScripts } = require("../../config/config");
 
@@ -6,7 +6,7 @@ const { environmentalScripts } = require("../../config/config");
 function SessionHandler(db) {
   "use strict";
 
-  const userDAO = new UserDAO(db);
+  const user = new UserModel(db);
   const allocationsDAO = new AllocationsDAO(db);
 
   const prepareUserData = (user, next) => {
@@ -22,7 +22,7 @@ function SessionHandler(db) {
 
   this.isAdminUserMiddleware = (req, res, next) => {
     if (req.session.userId) {
-      return userDAO.getUserById(req.session.userId, (err, user) =>
+      return user.getUserById(req.session.userId, (err, user) =>
         user && user.isAdmin ? next() : res.redirect("/login")
       );
     }
@@ -42,7 +42,7 @@ function SessionHandler(db) {
     // return res.json(req.session);
     if (req.session.userId) {
       return res.render("user-profile", {
-        ...userDAO.getUserById(req.session.userId),
+        ...user.getUserById(req.session.userId),
       });
     }
     return res.render("login", {
@@ -57,7 +57,7 @@ function SessionHandler(db) {
     // return res.json(req.session);
     if (req.session.userId) {
       return res.render("user-profile", {
-        ...userDAO.getUserById(req.session.userId),
+        ...user.getUserById(req.session.userId),
       });
     }
     return res.render("login", {
@@ -68,10 +68,20 @@ function SessionHandler(db) {
       headerClass: "cls",
     });
   };
+  this.displayCart = (req, res, next) => {
+    // return res.json(req.session);
+    if (req.session.userId) {
+      return res.render("cart", {
+        ...user.getUserById(req.session.userId),
+        headerClass: "cls",
+      });
+    }
+    return res.redirect('/login');
+  };
 
   this.handleLoginRequestUser = (req, res, next) => {
     const { userName, password } = req.body;
-    userDAO.validateLogin(userName, password, (err, user) => {
+    user.validateLogin(userName, password, (err, user) => {
       const errorMessage = "Invalid username and/or password";
       const invalidUserNameErrorMessage = "Invalid username";
       const invalidPasswordErrorMessage = "Invalid password";
@@ -131,7 +141,7 @@ function SessionHandler(db) {
   };
   this.handleLoginRequest = (req, res, next) => {
     const { userName, password } = req.body;
-    userDAO.validateLogin(userName, password, (err, user) => {
+    user.validateLogin(userName, password, (err, user) => {
       const errorMessage = "Invalid username and/or password";
       const invalidUserNameErrorMessage = "Invalid username";
       const invalidPasswordErrorMessage = "Invalid password";
@@ -191,7 +201,7 @@ function SessionHandler(db) {
   };
   this.handleLoginRequestAdmin = (req, res, next) => {
     const { userName, password } = req.body;
-    userDAO.validateLogin(userName, password, (err, user) => {
+    user.validateLogin(userName, password, (err, user) => {
       const errorMessage = "Invalid username and/or password";
       const invalidUserNameErrorMessage = "Invalid username";
       const invalidPasswordErrorMessage = "Invalid password";
@@ -346,7 +356,7 @@ function SessionHandler(db) {
         errors
       )
     ) {
-      userDAO.getUserByUserName(userName, (err, user) => {
+      user.getUserByUserName(userName, (err, user) => {
         if (err) return next(err);
 
         if (user) {
@@ -359,7 +369,7 @@ function SessionHandler(db) {
           });
         }
 
-        userDAO.addUser(
+        user.addUser(
           userName,
           firstName,
           lastName,
@@ -383,7 +393,7 @@ function SessionHandler(db) {
               // Set userId property. Required for left nav menu links
               user.userId = user._id;
 
-              return res.render("dashboard", {
+              return res.render("cart", {
                 ...user,
                 environmentalScripts,
               });
@@ -412,7 +422,28 @@ function SessionHandler(db) {
 
     userId = req.session.userId;
 
-    userDAO.getUserById(userId, (err, doc) => {
+    user.getUserById(userId, (err, doc) => {
+      if (err) return next(err);
+      doc.userId = userId;
+      return res.render("index", {
+        ...doc,
+        environmentalScripts,
+      });
+    });
+  };
+  this.displayDashPage = (req, res, next) => {
+    let userId;
+
+    if (!req.session.userId) {
+      console.log("welcome: Unable to identify user...redirecting to login");
+      // return res.redirect("/login");
+      // return res.redirect("/")
+      return res.render("index");
+    }
+
+    userId = req.session.userId;
+
+    user.getUserById(userId, (err, doc) => {
       if (err) return next(err);
       doc.userId = userId;
       return res.render("dashboard", {
