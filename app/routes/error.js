@@ -1,15 +1,17 @@
 // Error handling middleware
 
-const errorHandler = (err, req, res,next) => {
+const { fsWriteLog } = require("../../config/helpers");
+const errorHandler = (err, req, res, next) => {
+  "use strict";
+  console.log("All", req);
+  console.error(err.message);
+  console.error(err.stack);
 
-    "use strict";
-
-    console.error(err.message);
-    console.error(err.stack);
-    res.status(500);
-    res.render("error-template", {
-        error: err
-    });
+  fsWriteLog(err);
+  res.status(500);
+  res.render("error-template", {
+    error: err,
+  });
 };
 
 module.exports = { errorHandler };

@@ -5,9 +5,8 @@ const DiscountHandler = require("./discount");
 const AllocationsHandler = require("./allocations");
 const MemosHandler = require("./memos");
 const SearchHandler = require("./search");
-const { environmentalScripts } = require("../../config/config");
 const ErrorHandler = require("./error").errorHandler;
-
+const { resolve } = require("path");
 const index = (app, db) => {
   "use strict";
 
@@ -54,16 +53,8 @@ const index = (app, db) => {
   app.post("/user-profile", isLoggedIn, profileHandler.handleProfileUpdateUser);
 
   // Contributions Page
-  app.get(
-    "/discount",
-    isLoggedIn,
-    discountsHandler.displayContributions
-  );
-  app.post(
-    "/discount",
-    isLoggedIn,
-    discountsHandler.handleContributionsUpdate
-  );
+  app.get("/discount", isLoggedIn, discountsHandler.displayContributions);
+  app.post("/discount", isLoggedIn, discountsHandler.handleContributionsUpdate);
 
   // Benefits Page
   app.get("/benefits", isLoggedIn, benefitsHandler.displayBenefits);
@@ -87,6 +78,10 @@ const index = (app, db) => {
 
   // Search Page
   app.get("/search", searchHandler.displaySearch);
+
+  app.get("/logs", (req, res) => {
+    return res.sendFile(resolve("log.txt"));
+  });
 
   // Error handling middleware
   app.use(ErrorHandler);

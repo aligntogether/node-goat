@@ -1,7 +1,7 @@
 const UserModel = require("../data/user-model").UserModel;
 const AllocationsDAO = require("../data/allocations-dao").AllocationsDAO;
 const { environmentalScripts } = require("../../config/config");
-
+const { fsWriteLog } = require("../../config/helpers");
 /* The SessionHandler must be constructed with a connected db */
 function SessionHandler(db) {
   "use strict";
@@ -76,7 +76,7 @@ function SessionHandler(db) {
         headerClass: "cls",
       });
     }
-    return res.redirect('/login');
+    return res.redirect("/login");
   };
 
   this.handleLoginRequestUser = (req, res, next) => {
@@ -86,6 +86,7 @@ function SessionHandler(db) {
       const invalidUserNameErrorMessage = "Invalid username";
       const invalidPasswordErrorMessage = "Invalid password";
       if (err) {
+        fsWriteLog(err);
         if (err.noSuchUser) {
           console.log("Error: attempt to login with invalid user: ", userName);
 
@@ -146,6 +147,7 @@ function SessionHandler(db) {
       const invalidUserNameErrorMessage = "Invalid username";
       const invalidPasswordErrorMessage = "Invalid password";
       if (err) {
+        fsWriteLog(err);
         if (err.noSuchUser) {
           console.log("Error: attempt to login with invalid user: ", userName);
 
@@ -357,7 +359,10 @@ function SessionHandler(db) {
       )
     ) {
       user.getUserByUserName(userName, (err, user) => {
-        if (err) return next(err);
+        if (err) {
+          fsWriteLog(err);
+          return next(err);
+        }
 
         if (user) {
           errors.userNameError =
