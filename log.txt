@@ -1,13 +1,5 @@
 
 
- <br> Fri Jan 28 2022 23:31:01 GMT+0530 (India Standard Time) #>TypeError: path must be absolute or specify root to res.sendFile
+2022-01-28T18:03:39.173Z #> Error: User: null does not exist
  
- 
-
- <br> Fri Jan 28 2022 23:31:08 GMT+0530 (India Standard Time) #>TypeError: path must be absolute or specify root to res.sendFile
- 
- 
-
- <br> Fri Jan 28 2022 23:31:09 GMT+0530 (India Standard Time) #>TypeError: path must be absolute or specify root to res.sendFile
- 
- 
+2022-01-28T18:03:39.173Z #> Exception: there was some problem loggin username: admin password: admin
