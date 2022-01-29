@@ -6,8 +6,16 @@
 <link rel="stylesheet" type="text/css" href="css/style-fix-nav.css" /> -->
 {% endblock %}
 
-<div class="container container-ver2" style="margin-top: 220px;">
+<div class="container container-ver2" style="margin-top: 60px">
   <div class="page-login box space-50">
+    <ul class="nav navbar-nav menu-main" style="margin-bottom: 5rem">
+      <li class="dropdown menu-home">
+        <a href="" class="active">Change Profile</a>
+      </li>
+      <li class="dropdown menu-home">
+        <a href="/change-password">Change password</a>
+      </li>
+    </ul>
     <div class="row">
       <div class="col-md-12">
         <form role="form" method="post" action="">
@@ -107,12 +115,6 @@
           <button type="submit" class="btn btn-default" name="submit">
             Submit
           </button>
-
-          <!-- @FIXME use a properly escaped variable that matches the URL context, for example
-            refer to a firstNameSafeURLString field on the doc object set by the controller for this template -->
-          <a href="{{firstNameSafeString}}"
-            >Google search this profile by name</a
-          >
         </form>
       </div>
     </div>

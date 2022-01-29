@@ -51,6 +51,8 @@ const index = (app, db) => {
   app.post("/profile", isLoggedIn, profileHandler.handleProfileUpdateUser);
   app.get("/user-profile", isLoggedIn, profileHandler.displayUserProfile);
   app.post("/user-profile", isLoggedIn, profileHandler.handleProfileUpdateUser);
+  app.get("/change-password", isLoggedIn, profileHandler.changePasswordPage);
+  app.post("/change-password", isLoggedIn, profileHandler.handleChangePassword);
 
   // Contributions Page
   app.get("/discount", isLoggedIn, discountsHandler.displayContributions);

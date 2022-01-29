@@ -171,6 +171,55 @@ function ProfileHandler(db) {
       }
     );
   };
+  this.changePasswordPage = (req, res, next) => {
+    const { userId } = req.session;
+
+    profile.getByUserId(parseInt(userId), (err, doc) => {
+      if (err) return next(err);
+      doc.userId = userId;
+
+      // @TODO @FIXME
+      // while the developer intentions were correct in encoding the user supplied input so it
+      // doesn't end up as an XSS attack, the context is incorrect as it is encoding the firstname for HTML
+      // while this same variable is also used in the context of a URL link element
+      doc.website = ESAPI.encoder().encodeForHTML(doc.website);
+      // fix it by replacing the above with another template variable that is used for
+      // the context of a URL in a link header
+      // doc.website = ESAPI.encoder().encodeForURL(doc.website)
+
+      return res.render("change-password", {
+        ...doc,
+        environmentalScripts,
+        headerClass: "cls",
+      });
+    });
+  };
+
+  this.handleChangePassword = (req, res, next) => {
+    const { password, current, confirm_password } = req.body;
+    // return res.json(req.body);
+    if (current !== confirm_password) {
+      return res.render("user-profile", {
+        updateError: "new password doesn't match.",
+      });
+    }
+
+    const { userId } = req.session;
+
+    profile.updateUser(parseInt(userId), password, (err, user) => {
+      if (err) return next(err);
+
+      // WARN: Applying any sting specific methods here w/o checking type of inputs could lead to DoS by HPP
+      //firstName = firstName.trim();
+      user.updateSuccess = true;
+      user.userId = userId;
+
+      return res.render("user-profile", {
+        ...user,
+        environmentalScripts,
+      });
+    });
+  };
 }
 
 module.exports = ProfileHandler;
