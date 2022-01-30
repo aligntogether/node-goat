@@ -147,7 +147,7 @@ module.exports = function(grunt) {
     // Making grunt default to force in order not to break the project.
     grunt.option("force", true);
 
-    grunt.registerTask("db-reset", "(Re)init the database.", function(arg) {
+    grunt.registerTask("database", "(Re)init the database.", function(arg) {
         var finalEnv = process.env.NODE_ENV || arg || "development";
         var done;
 
@@ -155,10 +155,10 @@ module.exports = function(grunt) {
         var cmd = process.platform === "win32" ? "NODE_ENV=" + finalEnv + " & " : "NODE_ENV=" + finalEnv + " ";
 
         exec(
-            cmd + "node artifacts/db-reset.js",
+            cmd + "node database/database.js",
             function(err, stdout, stderr) {
                 if (err) {
-                    grunt.log.error("db-reset:");
+                    grunt.log.error("database:");
                     grunt.log.error(err);
                     grunt.log.error(stderr);
                 } else {

@@ -1,7 +1,7 @@
 const ContributionsDAO = require("../data/contributions-dao").ContributionsDAO;
 const {
     environmentalScripts
-} = require("../../config/config");
+} = require("../config/config");
 
 /* The ContributionsHandler must be constructed with a connected db */
 function ContributionsHandler(db) {

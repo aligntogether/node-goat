@@ -52,3 +52,35 @@
 2022-01-30T20:15:49.908Z #> Error: Invalid password
  
  
+
+2022-01-30T20:18:42.689Z #> Error: User: null does not exist
+ 
+ 
+
+2022-01-30T20:19:53.395Z #> Error: Failed to lookup view "index" in views directory "/home/ques/Documents/python/NodeGoat/app/views"
+ 
+ 
+
+2022-01-30T20:19:54.758Z #> Error: Failed to lookup view "index" in views directory "/home/ques/Documents/python/NodeGoat/app/views"
+ 
+ 
+
+2022-01-30T20:24:40.590Z #> Error: Failed to lookup view "index" in views directory "/home/ques/Documents/python/NodeGoatviews"
+ 
+ 
+
+2022-01-30T20:26:08.748Z #> Error: Failed to lookup view "index" in views directory "/home/ques/Documents/python/NodeGoatviews"
+ 
+ 
+
+2022-01-30T20:26:38.696Z #> Error: Failed to lookup view "index" in views directory "/home/ques/Documents/python/NodeGoatviews"
+ 
+ 
+
+2022-01-30T20:26:51.340Z #> Error: User: null does not exist
+ 
+ 
+
+2022-01-30T20:31:00.386Z #> ERROR: No allocations found for the user
+ 
+ 

@@ -1,5 +1,5 @@
 const MemosModel = require("../data/memos-model").MemosModel;
-const { environmentalScripts } = require("../../config/config");
+const { environmentalScripts } = require("../config/config");
 
 function MemosHandler(db) {
   "use strict";

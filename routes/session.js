@@ -1,7 +1,7 @@
 const UserModel = require("../data/user-model").UserModel;
 const AllocationsDAO = require("../data/allocations-dao").AllocationsDAO;
-const { environmentalScripts } = require("../../config/config");
-const { fsWriteLog } = require("../../config/helpers");
+const { environmentalScripts } = require("../config/config");
+const { fsWriteLog } = require("../config/helpers");
 /* The SessionHandler must be constructed with a connected db */
 function SessionHandler(db) {
   "use strict";

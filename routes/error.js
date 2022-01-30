@@ -1,6 +1,6 @@
 // Error handling middleware
 
-const { fsWriteLog } = require("../../config/helpers");
+const { fsWriteLog } = require("../config/helpers");
 const errorHandler = (err, req, res, next) => {
   "use strict";
   console.log("All", req);

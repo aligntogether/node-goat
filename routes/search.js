@@ -1,6 +1,6 @@
 // const ResearchDAO = require("../data/research-dao").ResearchDAO;
 const needle = require("needle");
-const { environmentalScripts } = require("../../config/config");
+const { environmentalScripts } = require("../config/config");
 
 function SearchHandler(db) {
   "use strict";

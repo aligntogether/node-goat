@@ -1,6 +1,6 @@
 const ProfileDAO = require("../data/profile-dao").ProfileDAO;
 const ESAPI = require("node-esapi");
-const { environmentalScripts } = require("../../config/config");
+const { environmentalScripts } = require("../config/config");
 const ForgotPasswordModel =
   require("../data/forgot-password-model").ForgotPasswordModel;
 const UserModel = require("../data/user-model").UserModel;

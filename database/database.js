@@ -4,7 +4,7 @@
 
 // This script initializes the database. You can set the environment variable
 // before running it (default: development). ie:
-// NODE_ENV=production node artifacts/db-reset.js
+// NODE_ENV=production node database/database.js
 
 const { MongoClient } = require("mongodb");
 const { db } = require("../config/config");
