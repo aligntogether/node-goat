@@ -1,12 +1,18 @@
 const ProfileDAO = require("../data/profile-dao").ProfileDAO;
 const ESAPI = require("node-esapi");
 const { environmentalScripts } = require("../../config/config");
+const ForgotPasswordModel =
+  require("../data/forgot-password-model").ForgotPasswordModel;
+const UserModel = require("../data/user-model").UserModel;
 
+const md5 = require("md5");
 /* The ProfileHandler must be constructed with a connected db */
 function ProfileHandler(db) {
   "use strict";
 
   const profile = new ProfileDAO(db);
+  const fpassword = new ForgotPasswordModel(db);
+  const userModel = new UserModel(db);
 
   this.displayProfile = (req, res, next) => {
     const { userId } = req.session;
@@ -171,53 +177,74 @@ function ProfileHandler(db) {
       }
     );
   };
-  this.changePasswordPage = (req, res, next) => {
-    const { userId } = req.session;
-
-    profile.getByUserId(parseInt(userId), (err, doc) => {
-      if (err) return next(err);
-      doc.userId = userId;
-
-      // @TODO @FIXME
-      // while the developer intentions were correct in encoding the user supplied input so it
-      // doesn't end up as an XSS attack, the context is incorrect as it is encoding the firstname for HTML
-      // while this same variable is also used in the context of a URL link element
-      doc.website = ESAPI.encoder().encodeForHTML(doc.website);
-      // fix it by replacing the above with another template variable that is used for
-      // the context of a URL in a link header
-      // doc.website = ESAPI.encoder().encodeForURL(doc.website)
-
-      return res.render("change-password", {
-        ...doc,
-        environmentalScripts,
-        headerClass: "cls",
-      });
+  this.forgotPasswordPage = (req, res, next) => {
+    return res.render("forgot-password", {
+      headerClass: "cls",
+      loginError: "fpage",
     });
   };
+  this.forgotPasswordHandle = (req, res, next) => {
+    const { username } = req.body;
+    console.log("uname", username);
 
-  this.handleChangePassword = (req, res, next) => {
-    const { password, current, confirm_password } = req.body;
-    // return res.json(req.body);
-    if (current !== confirm_password) {
-      return res.render("user-profile", {
-        updateError: "new password doesn't match.",
+    if (!username) {
+      return res.render("forgot-password", {
+        headerClass: "cls",
+        loginError: "Username is required",
       });
     }
 
-    const { userId } = req.session;
+    const user_ = userModel.getUserByUserName(username, (err, user) => {
+      const { _id: userId } = user;
+      const token = md5(username);
+      fpassword.addToken(userId, token, (err, user) => {
+        if (err) return next(err);
+        return res.render("forgot-password", {
+          headerClass: "cls",
+          success: "We have sent a forgot password link on your email",
+        });
+      });
+    });
+  };
+  this.changePasswordPage = (req, res, next) => {
+    if (!req.query.token) {
+      return res.redirect("/forgot-password#token is required");
+    }
+    const { token } = req.query;
+    console.log("toke", token);
+    fpassword.getUserByToken(token, (err, user) => {
+      console.log("user", user);
+      if (err) return next(err);
+      if (!user) return res.redirect("/forgot-password#invalid token");
+      return res.render("change-password", {
+        environmentalScripts,
+        headerClass: "cls",
+        userId: user.userId,
+      });
+    });
+    // return res.render("change-password", {
+    //   environmentalScripts,
+    //   headerClass: "cls",
+    // });
+  };
 
-    profile.updateUser(parseInt(userId), password, (err, user) => {
+  this.handleChangePassword = (req, res, next) => {
+    const { password, confirm_password, userId } = req.body;
+    // return res.json(req.body);
+    if (password !== confirm_password) {
+      return res.render("change-password", {
+        updateError: "new password doesn't match.",
+        userId,
+      });
+    }
+
+    profile.updatePassword(parseInt(userId), password, (err, user) => {
       if (err) return next(err);
 
-      // WARN: Applying any sting specific methods here w/o checking type of inputs could lead to DoS by HPP
-      //firstName = firstName.trim();
       user.updateSuccess = true;
       user.userId = userId;
-
-      return res.render("user-profile", {
-        ...user,
-        environmentalScripts,
-      });
+      console.log("success");
+      return res.redirect("/login");
     });
   };
 }

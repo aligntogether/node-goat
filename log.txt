@@ -3,3 +3,52 @@
 2022-01-28T18:03:39.173Z #> Error: User: null does not exist
  
 2022-01-28T18:03:39.173Z #> Exception: there was some problem loggin username: admin password: admin
+
+2022-01-30T19:17:11.331Z #> Error: Failed to lookup view "forgot-password" in views directory "/home/ques/Documents/python/NodeGoat/app/views"
+ 
+ 
+
+2022-01-30T19:42:33.920Z #> TypeError: profile.getUserByUserName is not a function
+ 
+ 
+
+2022-01-30T19:48:09.498Z #> Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+ 
+ 
+
+2022-01-30T19:48:41.322Z #> Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+ 
+ 
+
+2022-01-30T19:50:19.361Z #> Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+
+2022-01-30T19:50:19.361Z #> Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+      const token = md5(username);
+      fpassword.addToken(userId, token, (err, user) => { // after adding token to db sent an email
+       throw userId not found
+ 
+ 
+   {
+    _id: 61f6ea8c12aeba102f20c312,
+    userId: 1,
+    token: '21232f297a57a5a743894a0e4a801fc3'
+  },
+  {
+    _id: 61f6eb16d6632c10afe1db77,
+    userId: 1,
+    token: '21232f297a57a5a743894a0e4a801fc3'
+  },
+  {
+    _id: 61f6eb794e0c5e111319c600,
+    userId: 1,
+    token: '21232f297a57a5a743894a0e4a801fc3'
+  },
+
+
+2022-01-30T20:15:01.201Z #> MongoError: Modifiers operate on fields but we found type string instead. For example: {$mod: {<field>: ...}} not {$set: "12345"}
+ 
+ 
+
+2022-01-30T20:15:49.908Z #> Error: Invalid password
+ 
+ 
