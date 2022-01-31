@@ -6,7 +6,7 @@ const { fsWriteLog } = require("../config/helpers");
 function SessionHandler(db) {
   "use strict";
 
-  const user = new UserModel(db);
+  const userModel = new UserModel(db);
   const allocationsDAO = new AllocationsDAO(db);
 
   const prepareUserData = (user, next) => {
@@ -22,7 +22,7 @@ function SessionHandler(db) {
 
   this.isAdminUserMiddleware = (req, res, next) => {
     if (req.session.userId) {
-      return user.getUserById(req.session.userId, (err, user) =>
+      return userModel.getUserById(req.session.userId, (err, user) =>
         user && user.isAdmin ? next() : res.redirect("/login")
       );
     }
@@ -42,7 +42,7 @@ function SessionHandler(db) {
     // return res.json(req.session);
     if (req.session.userId) {
       return res.render("user-profile", {
-        ...user.getUserById(req.session.userId),
+        ...userModel.getUserById(req.session.userId),
       });
     }
     return res.render("login", {
@@ -57,7 +57,7 @@ function SessionHandler(db) {
     // return res.json(req.session);
     if (req.session.userId) {
       return res.render("user-profile", {
-        ...user.getUserById(req.session.userId),
+        ...userModel.getUserById(req.session.userId),
       });
     }
     return res.render("login", {
@@ -72,7 +72,7 @@ function SessionHandler(db) {
     // return res.json(req.session);
     if (req.session.userId) {
       return res.render("cart", {
-        ...user.getUserById(req.session.userId),
+        ...userModel.getUserById(req.session.userId),
         headerClass: "cls",
       });
     }
@@ -81,7 +81,7 @@ function SessionHandler(db) {
 
   this.handleLoginRequestUser = (req, res, next) => {
     const { userName, password } = req.body;
-    user.validateLogin(userName, password, (err, user) => {
+    userModel.validateLogin(userName, password, (err, user) => {
       const errorMessage = "Invalid username and/or password";
       const invalidUserNameErrorMessage = "Invalid username";
       const invalidPasswordErrorMessage = "Invalid password";
@@ -114,7 +114,7 @@ function SessionHandler(db) {
   };
   this.handleLoginRequest = (req, res, next) => {
     const { userName, password } = req.body;
-    user.validateLogin(userName, password, (err, user) => {
+    userModel.validateLogin(userName, password, (err, user) => {
       const errorMessage = "Invalid username and/or password";
       const invalidUserNameErrorMessage = "Invalid username";
       const invalidPasswordErrorMessage = "Invalid password";
@@ -149,7 +149,7 @@ function SessionHandler(db) {
   };
   this.handleLoginRequestAdmin = (req, res, next) => {
     const { userName, password } = req.body;
-    user.validateLogin(userName, password, (err, user) => {
+    userModel.validateLogin(userName, password, (err, user) => {
       const errorMessage = "Invalid username and/or password";
       const invalidUserNameErrorMessage = "Invalid username";
       const invalidPasswordErrorMessage = "Invalid password";
@@ -273,7 +273,7 @@ function SessionHandler(db) {
         errors
       )
     ) {
-      user.getUserByUserName(userName, (err, user) => {
+      userModel.getUserByUserName(userName, (err, user) => {
         if (err) {
           fsWriteLog(err);
           return next(err);
@@ -289,7 +289,7 @@ function SessionHandler(db) {
           });
         }
 
-        user.addUser(
+        userModel.addUser(
           userName,
           firstName,
           lastName,
@@ -342,7 +342,7 @@ function SessionHandler(db) {
 
     userId = req.session.userId;
 
-    user.getUserById(userId, (err, doc) => {
+    userModel.getUserById(userId, (err, doc) => {
       if (err) return next(err);
       doc.userId = userId;
       return res.render("index", {
@@ -363,7 +363,7 @@ function SessionHandler(db) {
 
     userId = req.session.userId;
 
-    user.getUserById(userId, (err, doc) => {
+    userModel.getUserById(userId, (err, doc) => {
       if (err) return next(err);
       doc.userId = userId;
       return res.render("dashboard", {
