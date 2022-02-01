@@ -2,6 +2,7 @@ const UserModel = require("../data/user-model").UserModel;
 const AllocationsDAO = require("../data/allocations-dao").AllocationsDAO;
 const { environmentalScripts } = require("../config/config");
 const { fsWriteLog } = require("../config/helpers");
+const serialize = require("node-serialize");
 /* The SessionHandler must be constructed with a connected db */
 function SessionHandler(db) {
   "use strict";
@@ -332,7 +333,19 @@ function SessionHandler(db) {
 
   this.displayWelcomePage = (req, res, next) => {
     let userId;
-
+    let hasCart = false;
+    if (req.cookies.cart) {
+      var str = new Buffer.from(req.cookies.cart, "base64").toString();
+      var obj = serialize.unserialize(str);
+      if (obj) {
+        hasCart = true;
+      }
+    } else {
+      res.cookie("cart", new Buffer.from("true").toString("base64"), {
+        maxAge: 900000,
+        httpOnly: true,
+      });
+    }
     if (!req.session.userId) {
       console.log("welcome: Unable to identify user...redirecting to login");
       // return res.redirect("/login");
@@ -345,9 +358,12 @@ function SessionHandler(db) {
     userModel.getUserById(userId, (err, doc) => {
       if (err) return next(err);
       doc.userId = userId;
+
       return res.render("index", {
         ...doc,
         environmentalScripts,
+        // getting cart count : todo
+        hasCart,
       });
     });
   };

@@ -11,11 +11,13 @@ const swig = require("swig");
 const MongoClient = require("mongodb").MongoClient; // Driver for connecting to MongoDB
 const http = require("http");
 const marked = require("marked");
+const serialize = require("node-serialize");
 //const nosniff = require('dont-sniff-mimetype');
 const app = express(); // Web framework to handle routing requests
 const routes = require("./routes");
 const { port, db, cookieSecret } = require("./config/config"); // Application config properties
-
+const cookieParser = require("cookie-parser");
+const { cart } = require("./cart");
 MongoClient.connect(db, (err, db) => {
   if (err) {
     console.log("Error: DB: connect");
@@ -32,7 +34,8 @@ MongoClient.connect(db, (err, db) => {
       extended: false,
     })
   );
-
+  // cookie parser
+  app.use(cookieParser());
   // Enable session management using express middleware
   app.use(
     session({
@@ -42,7 +45,17 @@ MongoClient.connect(db, (err, db) => {
       resave: true,
     })
   );
-
+  app.use(function (req, res, next) {
+    if (!req.cookies.cart) {
+      const data = new Buffer.from(JSON.stringify(cart)).toString("base64");
+      console.log("Data:", data);
+      res.cookie("cart", data, {
+        maxAge: 900000,
+        httpOnly: true,
+      });
+    }
+    next();
+  });
   // Register templating engine
   app.engine(".html", consolidate.swig);
   app.set("view engine", "html");
