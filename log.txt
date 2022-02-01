@@ -84,3 +84,57 @@
 2022-01-30T20:31:00.386Z #> ERROR: No allocations found for the user
  
  
+
+2022-02-01T16:24:16.445Z #> Error: Invalid password
+ 
+ 
+
+2022-02-01T16:24:25.399Z #> Error: Invalid password
+ 
+ 
+
+2022-02-01T16:24:31.743Z #> Error: Invalid password
+ 
+ 
+
+2022-02-01T16:59:11.089Z #> Error: Reserved keyword "if" attempted to be used as a variable on line 46 in file /home/ques/Documents/python/NodeGoat/views/advance.html.
+ 
+ 
+
+2022-02-01T16:59:12.998Z #> Error: Reserved keyword "if" attempted to be used as a variable on line 46 in file /home/ques/Documents/python/NodeGoat/views/advance.html.
+ 
+ 
+
+2022-02-01T17:04:33.975Z #> TypeError: req.all is not a function
+ 
+ 
+
+2022-02-01T17:04:51.152Z #> TypeError: req.all is not a function
+ 
+ 
+
+2022-02-01T17:05:00.186Z #> TypeError: req.all is not a function
+ 
+ 
+
+2022-02-01T17:05:04.242Z #> 
+
+2022-02-01T17:08:02.925Z #> TypeError: Cannot read property 'path' of undefined
+ 
+ 
+
+2022-02-01T17:41:16.878Z #> ReferenceError: pacfile is not defined
+ 
+ 
+
+2022-02-01T17:42:03.404Z #> ReferenceError: pacfile is not defined
+ 
+ 
+
+2022-02-01T17:42:08.941Z #> ReferenceError: pac is not defined
+ 
+ 
+
+2022-02-01T17:42:35.880Z #> Error: Line 1: Unexpected identifier
+ 
+ 

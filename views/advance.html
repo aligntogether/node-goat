@@ -1,0 +1,60 @@
+{% extends "./layout.html" %} {% block content %}
+
+<h4>Advance section</h4>
+<hr>
+<div class="section">
+
+    <div class="container">
+      <div class="is-max-w-lg mx-auto has-text-centered mb-6">
+      <h3>Proxy</h3>
+        </div>
+        <div class="row">
+            <div class="col-md-6 ">
+              
+                  <form action="/advance/proxy" enctype="multipart/form-data" method="post">
+                 
+                    
+                    <div class="form-group">
+                   
+                      <h4 class="subtitle">Pac check validator will validate your pac files.</h4>
+                      <div class="form-groupu">
+                        <label class="file-label">
+                          <input class="form-control" type="file" name="pacfile">
+                          <span class="file-cta">
+                            <span class="file-icon">
+                              <i class="fas fa-upload"></i>
+                            </span>
+                            <span class="file-label">
+                              Choose a file…
+                            </span>
+                          </span>
+                        </label>
+                      </div>
+
+                      <input class="btn btn-primary mt-1" type="submit" value="Submit PAC file!" class="btn btn-default">            
+                    </div>
+                  </form>
+
+            </div>
+            <div class="col-md-6">
+
+                <div class="field is-horizontal">
+                    <div class="field-body">
+                      <div class="field">
+                        <div class="control">
+                          <textarea class="textarea" placeholder="Output" rows="20">{% if proxyData %} {{proxyData}} {% endif %}
+                          </textarea>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+          </div>
+          
+
+  
+ 
+  
+
+</section>
+{% endblock %}

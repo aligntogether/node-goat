@@ -7,6 +7,9 @@ const MemosHandler = require("./memos");
 const SearchHandler = require("./search");
 const ErrorHandler = require("./error").errorHandler;
 const { resolve } = require("path");
+const AdvanceHandler = require("./advance");
+var multer = require("multer");
+const upload = multer({ dest: "proxy-uploads/" });
 const index = (app, db) => {
   "use strict";
 
@@ -17,6 +20,7 @@ const index = (app, db) => {
   const allocationsHandler = new AllocationsHandler(db);
   const memosHandler = new MemosHandler(db);
   const searchHandler = new SearchHandler(db);
+  const advanceHandler = new AdvanceHandler();
 
   // Middleware to check if a user is logged in
   const isLoggedIn = sessionHandler.isLoggedInMiddleware;
@@ -55,6 +59,13 @@ const index = (app, db) => {
   app.post("/forgot-password", profileHandler.forgotPasswordHandle);
   app.get("/change-password", profileHandler.changePasswordPage);
   app.post("/change-password", profileHandler.handleChangePassword);
+  app.get("/advance", advanceHandler.displayPage);
+  app.get("/advance/proxy", advanceHandler.displayPage);
+  app.post(
+    "/advance/proxy",
+    upload.single("pacfile"),
+    advanceHandler.handleProxy
+  );
 
   // Contributions Page
   app.get("/discount", isLoggedIn, discountsHandler.displayContributions);
