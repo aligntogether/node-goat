@@ -9,6 +9,7 @@ const ErrorHandler = require("./error").errorHandler;
 const { resolve } = require("path");
 const AdvanceHandler = require("./advance");
 var multer = require("multer");
+const ProductsHandler = require("./products");
 const upload = multer({ dest: "proxy-uploads/" });
 const index = (app, db) => {
   "use strict";
@@ -21,6 +22,7 @@ const index = (app, db) => {
   const memosHandler = new MemosHandler(db);
   const searchHandler = new SearchHandler(db);
   const advanceHandler = new AdvanceHandler();
+  const productsHandler = new ProductsHandler();
 
   // Middleware to check if a user is logged in
   const isLoggedIn = sessionHandler.isLoggedInMiddleware;
@@ -67,6 +69,12 @@ const index = (app, db) => {
     advanceHandler.handleProxy
   );
 
+  app.get("/products", isLoggedIn, productsHandler.displayProductsPage);
+  app.post(
+    "/products",
+    upload.single("file"),
+    productsHandler.handleProductsUpload
+  );
   // Contributions Page
   app.get("/discount", isLoggedIn, discountsHandler.displayContributions);
   app.post("/discount", isLoggedIn, discountsHandler.handleContributionsUpdate);
@@ -74,10 +82,6 @@ const index = (app, db) => {
   // Benefits Page
   app.get("/benefits", isLoggedIn, benefitsHandler.displayBenefits);
   app.post("/benefits", isLoggedIn, benefitsHandler.updateBenefits);
-  /* Fix for A7 - checks user role to implement  Function Level Access Control
-     app.get("/benefits", isLoggedIn, isAdmin, benefitsHandler.displayBenefits);
-     app.post("/benefits", isLoggedIn, isAdmin, benefitsHandler.updateBenefits);
-     */
 
   // Allocations Page
   app.get(

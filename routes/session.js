@@ -80,7 +80,7 @@ function SessionHandler(db) {
       return res.render("cart", {
         ...userModel.getUserById(req.session.userId),
         headerClass: "cls",
-        total: escape(obj.total),
+        total: escape(obj.rce),
       });
     }
     return res.redirect("/login");
