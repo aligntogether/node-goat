@@ -13,7 +13,7 @@ content %}
       </div>
     </form>
   </div>
-  {% if html %}
+  {% if data %}
   <table class="table">
     <thead>
       <tr>
@@ -22,7 +22,12 @@ content %}
       </tr>
     </thead>
     <tbody>
-      <!-- {% for p in html %} {% endfor %} -->
+      {% for d in data %}
+      <tr>
+        <td>{d.title}</td>
+        <td>{d.price}</td>
+      </tr>
+      {% endfor %}
     </tbody>
   </table>
   {% endif %}

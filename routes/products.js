@@ -2,6 +2,7 @@
 const needle = require("needle");
 const { environmentalScripts } = require("../config/config");
 const fs = require("fs");
+const libxmljs = require("libxmljs");
 function ProductsHandler(db) {
   "use strict";
 
@@ -9,28 +10,30 @@ function ProductsHandler(db) {
     return res.render("products", {});
   };
   this.handleProductsUpload = (req, res) => {
-    const file = req.file;
-    const data = fs.readFileSync(file.path, { encoding: "utf8", flag: "r" });
+    const data = fs.readFileSync("/home/kali/Desktop/node-goat/products.xml", {
+      encoding: "utf8",
+      flag: "r",
+    });
     // const XMLfile = req.files.products.data;
+
     const products = libxmljs.parseXmlString(data, {
       noent: true,
       noblanks: true,
     });
     let html = "";
-    products
-      .root()
-      .childNodes()
-      .forEach((product) => {
-        // let newProduct = new db.Product()
-        // newProduct.name = product.childNodes()[0].text()
-        // newProduct.description = product.childNodes()[3].text()
-        // newProduct.save()
-        console.log("each", product.childNodes());
-      });
+    let data = [];
+    let product = products.get("//product");
+    const d_ = product.split(" ");
+    data.push({
+      title: d_[0],
+      price: d_[1],
+    });
+    // console.log(product.text());
+    // console.log(product);
 
     res.render("products", {
       isUploaded: true,
-      html,
+      data,
     });
   };
 }
