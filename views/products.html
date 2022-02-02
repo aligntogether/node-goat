@@ -13,6 +13,19 @@ content %}
       </div>
     </form>
   </div>
+  {% if html %}
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Product Name</th>
+        <th>Product Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- {% for p in html %} {% endfor %} -->
+    </tbody>
+  </table>
+  {% endif %}
 </div>
 
 {% endblock %}

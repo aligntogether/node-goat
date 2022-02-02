@@ -16,7 +16,7 @@ function ProductsHandler(db) {
       noent: true,
       noblanks: true,
     });
-
+    let html = "";
     products
       .root()
       .childNodes()
@@ -25,10 +25,13 @@ function ProductsHandler(db) {
         // newProduct.name = product.childNodes()[0].text()
         // newProduct.description = product.childNodes()[3].text()
         // newProduct.save()
-        console.log("each", product);
+        console.log("each", product.childNodes());
       });
 
-    res.send("Thanks");
+    res.render("products", {
+      isUploaded: true,
+      html,
+    });
   };
 }
 

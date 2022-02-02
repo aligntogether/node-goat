@@ -195,15 +195,22 @@ function ProfileHandler(db) {
     }
 
     const user_ = userModel.getUserByUserName(username, (err, user) => {
-      const { _id: userId } = user;
-      const token = md5(username);
-      fpassword.addToken(userId, token, (err, user) => {
-        if (err) return next(err);
+      try {
+        const { _id: userId } = user;
+        const token = md5(username);
+        fpassword.addToken(userId, token, (err, user) => {
+          if (err) return next(err);
+          return res.render("forgot-password", {
+            headerClass: "cls",
+            success: "We have sent a forgot password link on your email",
+          });
+        });
+      } catch (error) {
         return res.render("forgot-password", {
           headerClass: "cls",
-          success: "We have sent a forgot password link on your email",
+          loginError: "User not found",
         });
-      });
+      }
     });
   };
   this.changePasswordPage = (req, res, next) => {
