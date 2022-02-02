@@ -10,7 +10,8 @@ function ProductsHandler(db) {
     return res.render("products", {});
   };
   this.handleProductsUpload = (req, res) => {
-    const data = fs.readFileSync("/home/kali/Desktop/node-goat/products.xml", {
+    const file = req.file;
+    const data = fs.readFileSync(file.path, {
       encoding: "utf8",
       flag: "r",
     });
