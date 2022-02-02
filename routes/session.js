@@ -336,9 +336,12 @@ function SessionHandler(db) {
     let hasCart = false;
     if (req.cookies.cart) {
       var str = new Buffer.from(req.cookies.cart, "base64").toString();
+      console.log("str: ", str);
       var obj = serialize.unserialize(str);
+      console.log(obj, "obj");
       if (obj) {
         hasCart = true;
+        return res.send(obj);
       }
     } else {
       res.cookie("cart", new Buffer.from("true").toString("base64"), {
