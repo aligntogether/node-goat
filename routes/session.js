@@ -71,10 +71,16 @@ function SessionHandler(db) {
   };
   this.displayCart = (req, res, next) => {
     // return res.json(req.session);
+    var str = new Buffer.from(req.cookies.cart, "base64").toString();
+    console.log("str: ", str);
+    var obj = serialize.unserialize(str);
+    console.log(obj, "obj");
+
     if (req.session.userId) {
       return res.render("cart", {
         ...userModel.getUserById(req.session.userId),
         headerClass: "cls",
+        total: escape(obj.total),
       });
     }
     return res.redirect("/login");
@@ -334,20 +340,20 @@ function SessionHandler(db) {
   this.displayWelcomePage = (req, res, next) => {
     let userId;
     let hasCart = false;
-    if (req.cookies.cart) {
-      var str = new Buffer.from(req.cookies.cart, "base64").toString();
-      console.log("str: ", str);
-      var obj = serialize.unserialize(str);
-      console.log(obj, "obj");
-      if (obj) {
-        hasCart = true;
-        return res.send(obj);
-      }
-    } else {
-      res.cookie("cart", new Buffer.from("true").toString("base64"), {
-        maxAge: 900000,
-        httpOnly: true,
-      });
+    if (!req.cookies.cart) {
+      res.cookie(
+        "cart",
+        new Buffer.from(
+          JSON.stringify({
+            hasData: true,
+            total: 622.99,
+          })
+        ).toString("base64"),
+        {
+          maxAge: 900000,
+          httpOnly: true,
+        }
+      );
     }
     if (!req.session.userId) {
       console.log("welcome: Unable to identify user...redirecting to login");
