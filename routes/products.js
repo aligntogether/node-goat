@@ -22,11 +22,14 @@ function ProductsHandler(db) {
     });
     let html = "";
     let data = [];
-    let product = products.get("//product");
-    const d_ = product.split(" ");
-    data.push({
-      title: d_[0],
-      price: d_[1],
+    // let product = products.get("//product");
+    let prod = products.find("//product");
+    // [1].childNodes()[1].text()
+    prod.forEach((each) => {
+      data.push({
+        title: each.childNodes()[0].text(),
+        price: each.childNodes()[1].text(),
+      });
     });
     // console.log(product.text());
     // console.log(product);
